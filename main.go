@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	redisAddrs := []string{"localhost:6379", "localhost:6380", "localhost:6381"}
+	redisAddrs := []string{"redis-12816.c274.us-east-1-3.ec2.cloud.redislabs.com:12816", "localhost:6380", "localhost:6381"}
 
 	quorum := len(redisAddrs)/2 + 1
 

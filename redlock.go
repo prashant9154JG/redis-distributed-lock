@@ -16,9 +16,17 @@ func NewRedlock(redisAddrs []string, quorum int) *Redlock {
 	clients := make([]*redis.Client, len(redisAddrs))
 
 	for i, addr := range redisAddrs {
-		clients[i] = redis.NewClient(&redis.Options{
-			Addr: addr,
-		})
+		if i==0{
+			clients[i] = redis.NewClient(&redis.Options{
+				Addr: addr,
+				Password: "sBrcUIpL2xoa1wz2a7FCsJl2aiqEQFKT",
+			})
+		}else {
+			clients[i] = redis.NewClient(&redis.Options{
+				Addr: addr,
+			})
+		}
+		
 	}
 
 	return &Redlock{redisClients: clients, quorum: quorum}
